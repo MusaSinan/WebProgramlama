@@ -1,0 +1,38 @@
+﻿@model IEnumerable<KuaforUygulamasi.Models.Employee>
+
+@{
+    ViewBag.Title = "Çalışanlar Listesi";
+}
+
+<h2>Çalışanlar Listesi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ad Soyad</th>
+            <th>Hizmet</th>
+            <th>Uygunluk</th>
+            <th>Uygunluk Saatleri</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.FullName</td>
+                <td>@employee.ServiceId</td>
+                <td>@(employee.IsAvailable ? "Uygun" : "Meşgul")</td>
+                <td>@employee.AvailabilityStart.ToShortTimeString() - @employee.AvailabilityEnd.ToShortTimeString()</td>
+                <td>
+                    <a href="@Url.Action("EditEmployee", "Admin", new { id = employee.Id })" class="btn btn-warning">Güncelle</a>
+                    <a href="@Url.Action("DeleteEmployee", "Admin", new { id = employee.Id })" class="btn btn-danger" onclick="return confirm('Bu çalışanı silmek istediğinizden emin misiniz?');">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("AddEmployee", "Admin")" class="btn btn-primary">Yeni Çalışan Ekle</a>

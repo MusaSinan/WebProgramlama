@@ -1,0 +1,35 @@
+﻿@model IEnumerable<KuaforUygulamasi.Models.Appointment>
+
+@{
+    ViewBag.Title = "Randevular Listesi";
+}
+
+<h2>randevular Listesi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Çalışan</th>
+            <th>Hizmet</th>
+            <th>Durum</th>
+            <th>Zaman</th>
+            <th>Süre</th>
+            <th>Ücret</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Id</td>
+                <td>@appointment.EmployeeId</td>
+                <td>@appointment.ServiceId</td>
+                <td>@appointment.StatusId</td>
+                <td>@appointment.AppointmentTime</td>
+                <td>@appointment.Duration</td>
+                <td>@appointment.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>

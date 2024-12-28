@@ -1,0 +1,20 @@
+﻿@model KuaforUygulamasi.Models.Service
+
+<h2>Yeni Hizmet Ekle</h2>
+
+<form asp-action="AddService" method="post">
+    <div class="form-group">
+        <label for="Name">Hizmet Adı</label>
+        <input type="text" class="form-control" id="Name" name="Name" placeholder="Hizmet adı giriniz" required />
+    </div>
+    <div class="form-group">
+        <label for="DurationMinutes">Süresi</label>
+        <input type="text" class="form-control" id="DurationMinutes" name="DurationMinutes" placeholder="Hizmet süresi giriniz" required />
+    </div>
+    <div class="form-group">
+        <label for="Price">Ücreti</label>
+        <input type="text" class="form-control" id="Price" name="Price" placeholder="Hizmet Ücreti" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+    <a href="@Url.Action("ListServices", "Admin")" class="btn btn-secondary">Geri Dön</a>
+</form>

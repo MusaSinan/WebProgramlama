@@ -1,0 +1,27 @@
+﻿@model KuaforUygulamasi.Models.Service
+
+@{
+    ViewBag.Title = "Hizmet Güncelle";
+}
+
+<h2>Çalışan Güncelle</h2>
+
+<form asp-action="EditEmployee" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="form-group">
+        <label for="Name">Hizmet Adı</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" placeholder="Hizmet adı giriniz" required />
+    </div>
+    <div class="form-group">
+        <label for="DurationMinutes">Süresi</label>
+        <input type="text" class="form-control" id="DurationMinutes" name="DurationMinutes" value="@Model.DurationMinutes" placeholder="Hizmet süresi giriniz" required />
+    </div>
+    <div class="form-group">
+        <label for="Price">Ücreti</label>
+        <input type="text" class="form-control" id="Price" name="Price" value="@Model.Price" placeholder="Hizmet Ücreti" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="@Url.Action("ListServices", "Admin")" class="btn btn-secondary">Geri Dön</a>
+</form>

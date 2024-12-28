@@ -1,0 +1,51 @@
+﻿@model KuaforUygulamasi.Models.Employee
+
+@{
+    ViewBag.Title = "Çalışan Güncelle";
+}
+
+<h2>Çalışan Güncelle</h2>
+
+<form asp-action="EditEmployee" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="form-group">
+        <label for="FullName">Ad Soyad</label>
+        <input type="text" class="form-control" id="FullName" name="FullName" value="@Model.FullName" placeholder="Çalışan adı giriniz" required />
+    </div>
+
+    <div class="form-group">
+        <label for="ServiceId">Hizmet</label>
+        <select class="form-control" id="ServiceId" name="ServiceId" asp-for="ServiceId" required>
+            <option value="">Hizmet Seçin</option>
+            <option value="1">Saç Tıraşı</option>
+            <option value="2">Sakal Tıraşı</option>
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <label>Uygunluk</label><br>
+        <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="IsAvailableTrue" name="IsAvailable" value="true" @(Model.IsAvailable ? "checked" : "")>
+            <label class="form-check-label" for="IsAvailableTrue">Uygun</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="IsAvailableFalse" name="IsAvailable" value="false" @(!Model.IsAvailable ? "checked" : "")>
+            <label class="form-check-label" for="IsAvailableFalse">Meşgul</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="AvailabilityStart">Uygunluk Başlangıç Saati</label>
+        <input type="time" class="form-control" id="AvailabilityStart" name="AvailabilityStart" value="@Model.AvailabilityStart.ToString("HH:mm")" required />
+    </div>
+
+    <div class="form-group">
+        <label for="AvailabilityEnd">Uygunluk Bitiş Saati</label>
+        <input type="time" class="form-control" id="AvailabilityEnd" name="AvailabilityEnd" value="@Model.AvailabilityEnd.ToString("HH:mm")" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="@Url.Action("ListEmployees", "Admin")" class="btn btn-secondary">Geri Dön</a>
+</form>

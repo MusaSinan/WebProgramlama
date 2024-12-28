@@ -1,0 +1,36 @@
+﻿@model IEnumerable<KuaforUygulamasi.Models.Service>
+
+@{
+    ViewBag.Title = "Hizmetler Listesi";
+}
+
+<h2>Hizmetler Listesi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Hizmet Adı</th>
+            <th>Süre</th>
+            <th>Ücret</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model)
+        {
+            <tr>
+                <td>@service.Id</td>
+                <td>@service.Name</td>
+                <td>@service.DurationMinutes</td>
+                <td>@service.Price</td>
+                
+                <td>
+                    <a href="@Url.Action("EditService", "Admin", new { id = service.Id })" class="btn btn-warning">Güncelle</a>
+                    <a href="@Url.Action("DeleteService", "Admin", new { id = service.Id })" class="btn btn-danger" onclick="return confirm('Bu servisi silmek istediğinizden emin misiniz?');">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("AddService", "Admin")" class="btn btn-primary">Yeni Hizmet Ekle</a>

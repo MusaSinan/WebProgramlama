@@ -1,0 +1,24 @@
+﻿@model List<Appointment>
+
+<h2>Randevularım</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Hizmet Adı</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.ServiceId</td>
+                <td>@appointment.AppointmentTime.ToShortDateString()</td>
+                <td>@appointment.AppointmentTime.ToShortTimeString()</td>
+                <td>@appointment.StatusId</td>
+            </tr>
+        }
+    </tbody>
+</table>
